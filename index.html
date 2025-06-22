@@ -53,7 +53,7 @@
 
       /* Only when authorized, page 2 becomes accessible */
       #page2.authorized {
-        display: block !important;
+        display: flex !important;
         visibility: visible !important;
         opacity: 1 !important;
         position: relative !important;
@@ -229,7 +229,7 @@
         animation-delay: 7s;
       }
 
-      /* Contenuto principale con design moderno */
+      /* Contenuto principale con design moderno - RIPRISTINATO */
       .main-content {
         position: absolute;
         top: 50%;
@@ -293,6 +293,14 @@
         overflow: hidden;
       }
 
+      /* NUOVA REGOLA: Stile per l'immagine nel pulsante */
+      .face-button img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
       .face-button::before {
         content: "";
         position: absolute;
@@ -326,7 +334,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: 40px;
+        padding: 20px;
         min-height: 100vh;
       }
 
@@ -424,7 +432,7 @@
         }
       }
 
-      /* Mobile Optimization */
+      /* Ottimizzazione Mobile */
       @media (max-width: 768px) {
         .main-content {
           padding: 40px 25px;
@@ -491,10 +499,12 @@
         }
       }
 
+      /* ADATTAMENTI PER SAMSUNG A54 e schermi simili */
       @media (max-width: 480px) {
         .main-content {
           padding: 30px 20px;
           margin: 10px;
+          width: 90vw; /* Usa la larghezza del viewport */
         }
 
         .main-title {
@@ -513,6 +523,54 @@
           font-size: 3rem;
         }
 
+        /* Adattamenti grafiche aeroporto per riempire lo schermo */
+        .sky-background {
+          height: 50vh; /* Adatta altezza per schermi verticali */
+        }
+
+        .runway {
+          bottom: 10vh; /* Posiziona relativo all'altezza del viewport */
+          height: 10vh;
+        }
+
+        .terminal {
+          width: 50vw; /* Usa la larghezza del viewport per scalare */
+          height: auto;
+          bottom: 18vh;
+          left: 5vw;
+        }
+
+        .control-tower {
+          width: 25vw;
+          height: auto;
+          bottom: 15vh;
+          right: 5vw;
+        }
+
+        .airplane-main {
+          width: 30vw;
+          height: auto;
+          top: 25%;
+        }
+
+        .airplane-small {
+          width: 22vw;
+          height: auto;
+          top: 18%;
+        }
+
+        .sun {
+          width: 15vw;
+          height: 15vw;
+          top: 5vh;
+          right: 10vw;
+        }
+
+        /* Adattamenti centratura pagina Video */
+        #page2 {
+          padding: 20px; /* Padding uniforme */
+        }
+
         .video-title {
           font-size: 1.7rem;
           margin-bottom: 25px;
@@ -520,26 +578,19 @@
         }
 
         .video-container {
-          margin: 0 10px;
+          margin: 0;
           padding: 15px;
-        }
-
-        #page2 {
-          padding: 30px 10px;
+          width: 100%;
         }
       }
     </style>
   </head>
   <body>
-    <!-- Pagina 1: Aeroporto Completo -->
     <div id="page1" class="page active">
-      <!-- Sfondo cielo -->
       <div class="sky-background"></div>
 
-      <!-- Sole -->
       <div class="sun"></div>
 
-      <!-- Nuvole multiple -->
       <div class="cloud cloud1">
         <svg width="120" height="70" viewBox="0 0 120 70">
           <ellipse cx="30" cy="45" rx="25" ry="18" fill="white" opacity="0.9" />
@@ -618,13 +669,10 @@
         </svg>
       </div>
 
-      <!-- Pista di atterraggio -->
       <div class="runway"></div>
 
-      <!-- Terminal -->
       <div class="terminal">
         <svg width="300" height="120" viewBox="0 0 300 120">
-          <!-- Edificio principale -->
           <rect
             x="0"
             y="40"
@@ -634,9 +682,7 @@
             stroke="#E8989B"
             stroke-width="2"
           />
-          <!-- Tetto -->
           <polygon points="0,40 150,10 300,40" fill="#A8CCAB" />
-          <!-- Finestre -->
           <rect x="30" y="60" width="20" height="25" fill="#B8D4E3" />
           <rect x="70" y="60" width="20" height="25" fill="#B8D4E3" />
           <rect x="110" y="60" width="20" height="25" fill="#B8D4E3" />
@@ -644,15 +690,12 @@
           <rect x="190" y="60" width="20" height="25" fill="#B8D4E3" />
           <rect x="230" y="60" width="20" height="25" fill="#B8D4E3" />
           <rect x="270" y="60" width="20" height="25" fill="#B8D4E3" />
-          <!-- Porte -->
           <rect x="130" y="90" width="40" height="30" fill="#FFE082" />
         </svg>
       </div>
 
-      <!-- Torre di controllo dettagliata -->
       <div class="control-tower">
         <svg width="120" height="220" viewBox="0 0 120 220">
-          <!-- Base -->
           <rect
             x="25"
             y="120"
@@ -662,7 +705,6 @@
             stroke="#E8989B"
             stroke-width="2"
           />
-          <!-- Parte superiore -->
           <rect
             x="15"
             y="50"
@@ -672,7 +714,6 @@
             stroke="#9BB896"
             stroke-width="2"
           />
-          <!-- Finestre panoramiche -->
           <rect x="25" y="65" width="15" height="15" fill="#B8D4E3" />
           <rect x="45" y="65" width="15" height="15" fill="#B8D4E3" />
           <rect x="65" y="65" width="15" height="15" fill="#B8D4E3" />
@@ -681,7 +722,6 @@
           <rect x="45" y="85" width="15" height="15" fill="#B8D4E3" />
           <rect x="65" y="85" width="15" height="15" fill="#B8D4E3" />
           <rect x="85" y="85" width="15" height="15" fill="#B8D4E3" />
-          <!-- Antenna -->
           <line
             x1="60"
             y1="50"
@@ -691,7 +731,6 @@
             stroke-width="3"
           />
           <circle cx="60" cy="15" r="8" fill="#FF8A80" />
-          <!-- Radar rotante -->
           <circle
             cx="60"
             cy="25"
@@ -711,25 +750,19 @@
         </svg>
       </div>
 
-      <!-- Aereo principale -->
       <div class="airplane airplane-main">
         <svg width="120" height="60" viewBox="0 0 120 60">
-          <!-- Fusoliera -->
           <ellipse cx="60" cy="30" rx="55" ry="12" fill="#B8D4E3" />
-          <!-- Ali -->
           <ellipse cx="45" cy="30" rx="25" ry="6" fill="#A8CCAB" />
           <ellipse cx="75" cy="30" rx="15" ry="4" fill="#A8CCAB" />
-          <!-- Coda -->
           <polygon points="5,30 25,20 25,40" fill="#F4A6A6" />
           <polygon points="95,22 115,15 115,45 95,38" fill="#F4A6A6" />
-          <!-- Finestre -->
           <circle cx="70" cy="30" r="3" fill="#FFE082" />
           <circle cx="80" cy="30" r="3" fill="#FFE082" />
           <circle cx="90" cy="30" r="3" fill="#FFE082" />
         </svg>
       </div>
 
-      <!-- Aereo piccolo -->
       <div class="airplane airplane-small">
         <svg width="80" height="40" viewBox="0 0 80 40">
           <ellipse cx="40" cy="20" rx="35" ry="8" fill="#D1C4E9" />
@@ -740,7 +773,6 @@
         </svg>
       </div>
 
-      <!-- Veicoli di servizio -->
       <div class="service-vehicle vehicle1">
         <svg width="60" height="30" viewBox="0 0 60 30">
           <rect x="5" y="15" width="50" height="10" fill="#FFE082" />
@@ -759,23 +791,17 @@
         </svg>
       </div>
 
-      <!-- Contenuto principale -->
       <div class="main-content">
         <h1 class="main-title">
           Ciao Alessia, pronta a scoprire la destinazione finale?
         </h1>
         <p class="subtitle">Clicca sulla mia faccia per scoprirlo</p>
         <button class="face-button" onclick="goToPage2()">
-          <img
-            src="media\face.png"
-            alt="Descrizione dell'immagine"
-            style="width: 200px; height: auto; margin-left: 50px"
-          />/>
+          <img src="media\face.png" alt="Descrizione dell'immagine" />
         </button>
       </div>
     </div>
 
-    <!-- Pagina 2: Video -->
     <div id="page2" class="page">
       <h2 class="video-title">Goditi il video... e la destinazione</h2>
       <div class="video-container">
@@ -859,6 +885,9 @@
 
           page1.classList.remove("active");
           page2.classList.add("active");
+
+          // Aggiunto per risolvere il problema dello scroll
+          window.scrollTo(0, 0);
 
           // Start video automatically
           const video = document.getElementById("surpriseVideo");
